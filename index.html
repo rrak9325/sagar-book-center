@@ -11,9 +11,9 @@
   <meta property="og:description" content="Your neighbourhood bookshop since 1982. Find novels, classics, NCERT books and more at Gandhi Road, Ahmedabad." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.sagarbook.com" />
-  <meta property="og:image" content="https://www.sagarbook.com/images/sagarbook-card.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image" content="https://www.sagarbook.com/images/new-sagarbook-card.jpg" />
+  <meta property="og:image:width" content="3987" />
+  <meta property="og:image:height" content="2324" />
   <meta property="og:image:alt" content="Sagar Book Centre — Old &amp; New Book Seller &amp; Buyer, Gandhi Road, Ahmedabad" />
   <meta property="og:site_name" content="Sagar Book Centre" />
 
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sagar Book Centre — Ahmedabad" />
   <meta name="twitter:description" content="Your neighbourhood bookshop since 1982. Gandhi Road, Ahmedabad." />
-  <meta name="twitter:image" content="https://www.sagarbook.com/images/sagarbook-card.png" />
+  <meta name="twitter:image" content="https://www.sagarbook.com/images/new-sagarbook-card.jpg" />
 
   <title>Sagar Book Centre | Ahmedabad</title>
   <link rel="canonical" href="https://www.sagarbook.com" />
@@ -43,7 +43,7 @@
     "@context": "https://schema.org",
     "@type": "BookStore",
     "name": "Sagar Book Centre",
-    "image": "https://www.sagarbook.com/images/sagarbook-card.png",
+    "image": "https://www.sagarbook.com/images/new-sagarbook-card.jpg",
     "url": "https://www.sagarbook.com",
     "telephone": "+918758585259",
     "priceRange": "₹",
@@ -184,15 +184,25 @@
       </a>
     </div>
 
-    <!-- Scroll indicator -->
+    <!-- Scroll indicator — mouse+text on desktop, swipe hand on mobile -->
     <a href="#about" class="scroll-indicator" id="scroll-indicator" aria-label="Scroll down">
-      <span class="scroll-indicator-text">Scroll</span>
-      <span class="scroll-indicator-mouse" aria-hidden="true"></span>
-      <span class="scroll-indicator-chevrons" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
+      <!-- desktop version -->
+      <span class="scroll-indicator-text scroll-desktop">Scroll</span>
+      <span class="scroll-indicator-mouse scroll-desktop" aria-hidden="true"></span>
+      <span class="scroll-indicator-chevrons scroll-desktop" aria-hidden="true">
+        <span></span><span></span><span></span>
       </span>
+      <!-- mobile version: swipe up hand -->
+      <span class="scroll-mobile" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="scroll-hand-icon">
+          <path d="M10 3.5a1.5 1.5 0 0 1 3 0V9a1 1 0 0 1 2 0v1a1 1 0 0 1 2 0v1a1 1 0 0 1 2 0v4c0 2.761-2.239 5-5 5h-4a5 5 0 0 1-4.995-4.773L5 15.5v-5a1.5 1.5 0 0 1 2.996-.144L8 10.5V8a1.5 1.5 0 0 1 2-1.415V3.5z" opacity="0.9"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="scroll-swipe-arrow">
+          <line x1="12" y1="19" x2="12" y2="5"/>
+          <polyline points="5 12 12 5 19 12"/>
+        </svg>
+      </span>
+      <span class="scroll-indicator-text scroll-mobile" style="font-size:0.58rem;">Swipe Up</span>
     </a>
   </header>
 
@@ -532,6 +542,18 @@
 
   <!-- ===== SCRIPTS ===== -->
   <script>
+    // ── WhatsApp: mobile opens app, desktop opens web.whatsapp.com ──
+    (function () {
+      var isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+      var mobileUrl  = 'https://wa.me/918758585259';
+      var desktopUrl = 'https://web.whatsapp.com/send?phone=918758585259';
+      var url = isMobile ? mobileUrl : desktopUrl;
+      // update every WhatsApp link on the page
+      document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) {
+        a.href = url;
+      });
+    })();
+
     // ── Theme toggle ──
     (function () {
       var html   = document.documentElement;

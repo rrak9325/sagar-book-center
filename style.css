@@ -559,7 +559,30 @@ nav {
   50%       { opacity: 1;   }
 }
 
-/* light theme — hero always dark overlay so keep text light */
+/* desktop-only / mobile-only scroll indicator parts */
+.scroll-mobile  { display: none; }
+.scroll-desktop { display: flex; }
+
+/* swipe hand animation */
+.scroll-hand-icon {
+  animation: swipeUp 1.8s var(--ease) infinite;
+  display: block;
+}
+.scroll-swipe-arrow {
+  animation: swipeUp 1.8s var(--ease) 0.15s infinite;
+  display: block;
+  margin-top: -4px;
+}
+
+@keyframes swipeUp {
+  0%, 100% { transform: translateY(0);     opacity: 0.6; }
+  50%       { transform: translateY(-8px); opacity: 1;   }
+}
+
+@media (max-width: 640px) {
+  .scroll-desktop { display: none !important; }
+  .scroll-mobile  { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+}
 [data-theme="light"] .scroll-indicator       { color: rgba(245, 237, 224, 0.6); }
 [data-theme="light"] .scroll-indicator:hover { color: var(--gold); }
 
