@@ -431,48 +431,94 @@ nav {
 /* ── Scroll indicator ── */
 .scroll-indicator {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 2.8rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  color: rgba(237, 232, 223, 0.55);
+  gap: 0.55rem;
+  color: rgba(237, 232, 223, 0.7);
   text-decoration: none;
-  transition: color 0.2s, opacity 0.3s;
+  transition: color 0.25s, opacity 0.4s;
   opacity: 0;
   animation: heroFadeUp 0.8s var(--ease) 1.2s forwards;
   z-index: 2;
 }
 
-.scroll-indicator:hover {
-  color: var(--gold);
-}
+.scroll-indicator:hover { color: var(--gold); }
 
 .scroll-indicator-text {
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
 }
 
-.scroll-indicator-arrow {
-  animation: scrollBounce 1.8s var(--ease) infinite;
+/* mouse-shaped outer shell */
+.scroll-indicator-mouse {
+  width: 26px;
+  height: 40px;
+  border: 2px solid currentColor;
+  border-radius: 13px;
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 5px;
+  position: relative;
+  opacity: 0.8;
 }
 
-@keyframes scrollBounce {
-  0%, 100% { transform: translateY(0);    opacity: 0.55; }
-  50%       { transform: translateY(7px); opacity: 1;    }
+/* scrolling dot inside the mouse */
+.scroll-indicator-mouse::before {
+  content: '';
+  width: 4px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 2px;
+  animation: mouseDot 1.8s var(--ease) infinite;
 }
 
-/* light theme — darker text on light hero */
-[data-theme="light"] .scroll-indicator {
-  color: rgba(44, 26, 10, 0.45);
+@keyframes mouseDot {
+  0%   { transform: translateY(0);    opacity: 1;   }
+  60%  { transform: translateY(12px); opacity: 0;   }
+  61%  { transform: translateY(0);    opacity: 0;   }
+  100% { transform: translateY(0);    opacity: 1;   }
 }
-[data-theme="light"] .scroll-indicator:hover {
-  color: var(--gold);
+
+/* two chevrons that cascade downward */
+.scroll-indicator-chevrons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.scroll-indicator-chevrons span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  animation: chevronFade 1.8s var(--ease) infinite;
+}
+
+.scroll-indicator-chevrons span:nth-child(1) { animation-delay: 0s;    opacity: 0.3; }
+.scroll-indicator-chevrons span:nth-child(2) { animation-delay: 0.2s;  opacity: 0.6; }
+.scroll-indicator-chevrons span:nth-child(3) { animation-delay: 0.4s;  opacity: 1;   }
+
+@keyframes chevronFade {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 1;   }
+}
+
+/* light theme */
+[data-theme="light"] .scroll-indicator       { color: rgba(44, 26, 10, 0.55); }
+[data-theme="light"] .scroll-indicator:hover { color: var(--gold); }
+
+@media (max-width: 640px) {
+  .scroll-indicator { bottom: 1.8rem; }
 }
 
 /* =========================================
