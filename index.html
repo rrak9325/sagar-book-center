@@ -26,6 +26,8 @@
   <link rel="preload" as="image" href="images/front_main_shop.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Main fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=EB+Garamond:wght@400;700&family=Didact+Gothic&display=swap" />
   <link rel="stylesheet" href="style.css" />
 
   <!-- Schema.org LocalBusiness structured data -->
@@ -565,21 +567,34 @@
       });
     })();
 
-    // ── Typewriter ──
+    // ── Typewriter with rotating fonts ──
     (function () {
       var el       = document.getElementById('typewriter');
       if (!el) return;
       var text     = 'Sagar Book Centre';
       var i        = 0;
       var deleting = false;
-      var PAUSE_FULL  = 2200;  // pause after fully typed
-      var PAUSE_EMPTY = 600;   // pause after fully deleted
-      var TYPE_SPEED  = 90;    // ms per character typed
-      var DEL_SPEED   = 45;    // ms per character deleted (faster)
+      var fontIndex = 0;
+
+      // Each cycle picks the next font
+      var fonts = [
+        "'Playfair Display', Georgia, serif",
+        "'Georgia', serif",
+        "'Courier New', Courier, monospace",
+        "'Palatino Linotype', Palatino, serif",
+        "'Garamond', 'EB Garamond', serif",
+        "'Times New Roman', Times, serif",
+        "'Didact Gothic', sans-serif",
+        "'Trebuchet MS', sans-serif",
+      ];
+
+      var PAUSE_FULL  = 2000;
+      var PAUSE_EMPTY = 400;
+      var TYPE_SPEED  = 85;
+      var DEL_SPEED   = 40;
 
       function tick() {
         if (!deleting) {
-          // typing forward
           i++;
           el.textContent = text.slice(0, i);
           if (i === text.length) {
@@ -589,11 +604,13 @@
             setTimeout(tick, TYPE_SPEED);
           }
         } else {
-          // deleting
           i--;
           el.textContent = text.slice(0, i);
           if (i === 0) {
             deleting = false;
+            // advance to next font on each new cycle
+            fontIndex = (fontIndex + 1) % fonts.length;
+            el.style.fontFamily = fonts[fontIndex];
             setTimeout(tick, PAUSE_EMPTY);
           } else {
             setTimeout(tick, DEL_SPEED);
@@ -601,7 +618,8 @@
         }
       }
 
-      // start after hero fade-in delay
+      // set initial font and kick off
+      el.style.fontFamily = fonts[0];
       setTimeout(tick, 500);
     })();
 
