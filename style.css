@@ -375,6 +375,22 @@ nav {
   opacity: 0;
   animation: heroFadeUp 0.9s var(--ease) 0.38s forwards;
   transition: color 0.4s var(--ease);
+  /* min-height prevents layout jump as text types in */
+  min-height: 1.1em;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  font-weight: 300;
+  color: var(--gold);
+  animation: cursorBlink 0.75s step-end infinite;
+  margin-left: 2px;
+  line-height: 1;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 .hero-location {

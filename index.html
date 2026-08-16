@@ -151,7 +151,7 @@
   -->
   <header class="hero" role="banner" style="background-image: url('images/front_main_shop.webp')">
     <div class="hero-eyebrow">Est. 21 June 1982 &nbsp;·&nbsp; Ahmedabad, Gujarat</div>
-    <h1>Sagar Book Centre</h1>
+    <h1><span id="typewriter"></span><span class="typewriter-cursor">|</span></h1>
     <p class="hero-location">Gandhi Road &nbsp;·&nbsp; Ahmedabad</p>
     <div class="hero-divider"></div>
     <p class="hero-tagline">"Find your escape and get lost in a good story."</p>
@@ -563,6 +563,46 @@
       document.querySelectorAll('.reveal, .stagger').forEach(function (el) {
         observer.observe(el);
       });
+    })();
+
+    // ── Typewriter ──
+    (function () {
+      var el       = document.getElementById('typewriter');
+      if (!el) return;
+      var text     = 'Sagar Book Centre';
+      var i        = 0;
+      var deleting = false;
+      var PAUSE_FULL  = 2200;  // pause after fully typed
+      var PAUSE_EMPTY = 600;   // pause after fully deleted
+      var TYPE_SPEED  = 90;    // ms per character typed
+      var DEL_SPEED   = 45;    // ms per character deleted (faster)
+
+      function tick() {
+        if (!deleting) {
+          // typing forward
+          i++;
+          el.textContent = text.slice(0, i);
+          if (i === text.length) {
+            deleting = true;
+            setTimeout(tick, PAUSE_FULL);
+          } else {
+            setTimeout(tick, TYPE_SPEED);
+          }
+        } else {
+          // deleting
+          i--;
+          el.textContent = text.slice(0, i);
+          if (i === 0) {
+            deleting = false;
+            setTimeout(tick, PAUSE_EMPTY);
+          } else {
+            setTimeout(tick, DEL_SPEED);
+          }
+        }
+      }
+
+      // start after hero fade-in delay
+      setTimeout(tick, 500);
     })();
 
     // ── Scroll indicator fade out ──
