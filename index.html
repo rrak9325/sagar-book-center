@@ -26,8 +26,8 @@
   <link rel="preload" as="image" href="images/front_main_shop.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Main fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=EB+Garamond:wght@400;700&family=Didact+Gothic&display=swap" />
+  <!-- Main fonts + typewriter rotation fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cinzel:wght@700&family=Bebas+Neue&family=Dancing+Script:wght@700&family=Abril+Fatface&family=Righteous&family=Permanent+Marker&family=Satisfy&display=swap" />
   <link rel="stylesheet" href="style.css" />
 
   <!-- Schema.org LocalBusiness structured data -->
@@ -154,6 +154,7 @@
   <header class="hero" role="banner" style="background-image: url('images/front_main_shop.webp')">
     <div class="hero-eyebrow">Est. 21 June 1982 &nbsp;·&nbsp; Ahmedabad, Gujarat</div>
     <h1><span id="typewriter"></span><span class="typewriter-cursor">|</span></h1>
+    <div class="typewriter-font-label" id="typewriter-font-label" aria-hidden="true"></div>
     <p class="hero-location">Gandhi Road &nbsp;·&nbsp; Ahmedabad</p>
     <div class="hero-divider"></div>
     <p class="hero-tagline">"Find your escape and get lost in a good story."</p>
@@ -567,31 +568,50 @@
       });
     })();
 
-    // ── Typewriter with rotating fonts ──
+    // ── Typewriter with rotating fonts + colors ──
     (function () {
-      var el       = document.getElementById('typewriter');
+      var el        = document.getElementById('typewriter');
+      var label     = document.getElementById('typewriter-font-label');
       if (!el) return;
-      var text     = 'Sagar Book Centre';
-      var i        = 0;
-      var deleting = false;
+
+      var text      = 'Sagar Book Centre';
+      var i         = 0;
+      var deleting  = false;
       var fontIndex = 0;
 
-      // Each cycle picks the next font
-      var fonts = [
-        "'Playfair Display', Georgia, serif",
-        "'Georgia', serif",
-        "'Courier New', Courier, monospace",
-        "'Palatino Linotype', Palatino, serif",
-        "'Garamond', 'EB Garamond', serif",
-        "'Times New Roman', Times, serif",
-        "'Didact Gothic', sans-serif",
-        "'Trebuchet MS', sans-serif",
+      // Each entry: font-family, display name, color
+      var styles = [
+        { font: "'Playfair Display', serif",  name: 'Playfair Display',  color: '#c9a96e' },
+        { font: "'Cinzel', serif",             name: 'Cinzel',            color: '#e8c97a' },
+        { font: "'Bebas Neue', sans-serif",    name: 'Bebas Neue',        color: '#e07a5f' },
+        { font: "'Dancing Script', cursive",   name: 'Dancing Script',    color: '#81b29a' },
+        { font: "'Abril Fatface', serif",      name: 'Abril Fatface',     color: '#f2cc8f' },
+        { font: "'Righteous', sans-serif",     name: 'Righteous',         color: '#7ec8e3' },
+        { font: "'Permanent Marker', cursive", name: 'Permanent Marker',  color: '#d4a373' },
+        { font: "'Satisfy', cursive",          name: 'Satisfy',           color: '#c77dff' },
       ];
 
-      var PAUSE_FULL  = 2000;
-      var PAUSE_EMPTY = 400;
-      var TYPE_SPEED  = 85;
-      var DEL_SPEED   = 40;
+      var PAUSE_FULL  = 2200;
+      var PAUSE_EMPTY = 350;
+      var TYPE_SPEED  = 80;
+      var DEL_SPEED   = 35;
+
+      function applyStyle(idx) {
+        var s = styles[idx];
+        el.style.fontFamily = s.font;
+        el.style.color      = s.color;
+        // update cursor color too
+        var cursor = document.querySelector('.typewriter-cursor');
+        if (cursor) cursor.style.color = s.color;
+        // flash the font name label
+        if (label) {
+          label.textContent = s.name;
+          label.classList.remove('is-visible');
+          // force reflow so animation replays
+          void label.offsetWidth;
+          label.classList.add('is-visible');
+        }
+      }
 
       function tick() {
         if (!deleting) {
@@ -601,16 +621,15 @@
             deleting = true;
             setTimeout(tick, PAUSE_FULL);
           } else {
-            setTimeout(tick, TYPE_SPEED);
+            setTimeout(tick, TYPE_SPEED + Math.random() * 30); // tiny jitter = more human
           }
         } else {
           i--;
           el.textContent = text.slice(0, i);
           if (i === 0) {
-            deleting = false;
-            // advance to next font on each new cycle
-            fontIndex = (fontIndex + 1) % fonts.length;
-            el.style.fontFamily = fonts[fontIndex];
+            deleting  = false;
+            fontIndex = (fontIndex + 1) % styles.length;
+            applyStyle(fontIndex);
             setTimeout(tick, PAUSE_EMPTY);
           } else {
             setTimeout(tick, DEL_SPEED);
@@ -618,9 +637,9 @@
         }
       }
 
-      // set initial font and kick off
-      el.style.fontFamily = fonts[0];
-      setTimeout(tick, 500);
+      // set initial style and kick off
+      applyStyle(0);
+      setTimeout(tick, 600);
     })();
 
     // ── Scroll indicator fade out ──
