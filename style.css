@@ -321,7 +321,7 @@ nav {
   text-align: center;
   padding: 8rem 2rem 6rem;
   position: relative;
-  overflow: hidden;
+  /* removed overflow:hidden — it clips button tap areas on mobile */
   background-color: var(--bg-2);
   background-size: cover;
   background-position: center;
@@ -463,6 +463,15 @@ nav {
   flex-wrap: wrap;
   opacity: 0;
   animation: heroFadeUp 0.8s var(--ease) 0.86s forwards;
+  position: relative;
+  z-index: 5;
+}
+
+/* ensure buttons inside hero are always tappable */
+.hero-cta-group .btn {
+  position: relative;
+  z-index: 5;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 @keyframes heroFadeUp {
