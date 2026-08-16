@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sagar Book Centre — Ahmedabad's beloved bookshop since 1982. Explore a wide collection of books across all genres at 16 Seller Kanak Chamber, Gandhi Road." />
+  <meta name="keywords" content="bookshop ahmedabad, books gandhi road, sagar book centre, buy books ahmedabad" />
+  <meta property="og:title" content="Sagar Book Centre — Ahmedabad" />
+  <meta property="og:description" content="Your neighbourhood bookshop since 1982. Find novels, classics, new releases and more at Gandhi Road, Ahmedabad." />
+  <meta property="og:type" content="website" />
+
+  <title>Sagar Book Centre | Ahmedabad</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Theme: apply saved preference BEFORE paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('sbc-theme');
+        // default is light — only switch to dark if explicitly saved
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav aria-label="Main navigation">
+    <a href="#" class="nav-brand">
+      <img src="images/logo.jpg" alt="Sagar Book Centre" class="nav-logo" />
+      <span class="nav-brand-text"><span>Sagar</span> Book Centre</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" class="nav-link-item">About</a></li>
+      <li><a href="#genres" class="nav-link-item">Collection</a></li>
+      <li><a href="#visit" class="nav-link-item">Visit</a></li>
+      <li><a href="tel:+918758585259" class="nav-cta">Call Us</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:0.6rem;">
+      <!-- theme toggle -->
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+        <!-- moon — shown in dark mode -->
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <!-- sun — shown in light mode -->
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <!-- hamburger — only visible on mobile -->
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- mobile drawer -->
+  <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+    <a href="#about"  class="nav-drawer-link">About</a>
+    <a href="#genres" class="nav-drawer-link">Collection</a>
+    <a href="#visit"  class="nav-drawer-link">Visit</a>
+    <div class="nav-drawer-actions">
+      <a href="tel:+918758585259" class="btn btn-primary" style="justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        Call Now
+      </a>
+      <a href="https://wa.me/918758585259" target="_blank" rel="noopener" class="btn btn-whatsapp" style="justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- ===== HERO ===== -->
+  <!--
+    ADD YOUR HERO IMAGE:
+    style="background-image: url('images/hero.jpg')"
+  -->
+  <header class="hero" role="banner" style="background-image: url('images/front_main_shop.webp')">
+    <div class="hero-eyebrow">Est. 21 June 1982 &nbsp;·&nbsp; Ahmedabad, Gujarat</div>
+    <h1>Sagar Book Centre</h1>
+    <p class="hero-location">Gandhi Road &nbsp;·&nbsp; Ahmedabad</p>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">"Find your escape and get lost in a good story."</p>
+    <div class="hero-cta-group">
+      <!-- tel: opens phone dialer directly on mobile -->
+      <a href="tel:+918758585259" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        Call Now
+      </a>
+      <!-- wa.me opens WhatsApp chat directly -->
+      <a href="https://wa.me/918758585259" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <!-- Google Maps short link — opens in Maps app on mobile -->
+      <a href="https://maps.app.goo.gl/u5iPHUiogL23BqKf8" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Directions
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="about-inner">
+
+        <div class="about-text reveal reveal--left">
+          <p class="section-eyebrow">Our Story</p>
+          <div class="section-rule"></div>
+          <h2 class="section-title" id="about-title">A Treasure Trove for Book Lovers</h2>
+          <p class="section-body">
+            Nestled in the heart of Ahmedabad at 16 Seller Kanak Chamber, Sagar Book Centre has been a beloved destination for readers since 1982. Walk in and immerse yourself in the scent of new pages as you browse a diverse collection spanning every genre imaginable.
+          </p>
+          <p class="section-body" style="margin-top: 1rem;">
+            Whether you're on the hunt for a thrilling novel, a timeless classic, or the latest release, our friendly staff are always on hand to help you find your next great read.
+          </p>
+          <div class="about-stats stagger">
+            <div class="stat">
+              <span class="stat-number">44+</span>
+              <span class="stat-label">Years of Service</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">1000s</span>
+              <span class="stat-label">Books in Stock</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">1982</span>
+              <span class="stat-label">Founded</span>
+            </div>
+          </div>
+        </div>
+
+        <!--
+          ADD YOUR STORE IMAGE:
+          style="background-image: url('images/store.jpg')"
+        -->
+        <div class="about-visual reveal reveal--right" style="background-image: url('images/2ndgoodimage.webp')" aria-hidden="true">
+          <span class="about-visual-fallback" style="display:none"></span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GENRES ===== -->
+  <section class="genres" id="genres" aria-labelledby="genres-title">
+    <div class="container">
+      <div class="genres-header reveal">
+        <p class="section-eyebrow">What We Carry</p>
+        <div class="section-rule"></div>
+        <h2 class="section-title" id="genres-title">Something for Every Reader</h2>
+        <p class="section-body">Over four decades of curating stories — our shelves carry titles across every mood, mind and moment.</p>
+      </div>
+    </div>
+
+    <!-- ── IMAGE SLIDER ── -->
+    <div class="genre-slider reveal" id="genre-slider" aria-label="Genre collection slideshow">
+
+      <!-- Progress timer bar -->
+      <div class="slider-progress" id="slider-progress" aria-hidden="true">
+        <div class="slider-progress-fill" id="slider-progress-fill"></div>
+      </div>
+
+      <!-- Slides — NCERT/Academic first (priority) -->
+      <div class="slider-track" id="slider-track">
+
+        <div class="slide" aria-hidden="false">
+          <div class="slide-img" style="background-image:url('images/booksimg4.webp')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">Priority Collection</span>
+            <h3 class="slide-title">Academic &amp; NCERT</h3>
+            <p class="slide-desc">NCERT textbooks, competitive exam guides, reference books and more — stocked fresh every season for students across all boards.</p>
+          </div>
+        </div>
+
+        <div class="slide" aria-hidden="true">
+          <div class="slide-img" style="background-image:url('images/shelf1.webp')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">Our Shelves</span>
+            <h3 class="slide-title">Fiction &amp; Novels</h3>
+            <p class="slide-desc">From literary classics to contemporary bestsellers — stories that stay with you long after the last page.</p>
+          </div>
+        </div>
+
+        <div class="slide" aria-hidden="true">
+          <div class="slide-img" style="background-image:url('images/shelf2.jpg')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">Timeless Reads</span>
+            <h3 class="slide-title">Classics</h3>
+            <p class="slide-desc">Timeless works that have shaped literature — always in stock, always essential. Dickens to Dostoevsky.</p>
+          </div>
+        </div>
+
+        <div class="slide" aria-hidden="true">
+          <div class="slide-img" style="background-image:url('images/booksimg1.jpg')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">Page Turners</span>
+            <h3 class="slide-title">Mystery &amp; Thriller</h3>
+            <p class="slide-desc">Books that keep you up past midnight — our bestselling section and a crowd favourite at the shop.</p>
+          </div>
+        </div>
+
+        <div class="slide" aria-hidden="true">
+          <div class="slide-img" style="background-image:url('images/booksimg2.jpg')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">Just Arrived</span>
+            <h3 class="slide-title">New Releases</h3>
+            <p class="slide-desc">We keep our shelves current. Find the latest titles from your favourite authors as soon as they drop.</p>
+          </div>
+        </div>
+
+        <div class="slide" aria-hidden="true">
+          <div class="slide-img" style="background-image:url('images/booksimg3.webp')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">Grow &amp; Thrive</span>
+            <h3 class="slide-title">Self-Help &amp; Business</h3>
+            <p class="slide-desc">Personal development, productivity, finance and entrepreneurship — books that actually move the needle.</p>
+          </div>
+        </div>
+
+        <div class="slide" aria-hidden="true">
+          <div class="slide-img" style="background-image:url('images/lowk_entrancedown_stairs.webp')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">Into the Unknown</span>
+            <h3 class="slide-title">Sci-Fi &amp; Fantasy</h3>
+            <p class="slide-desc">Worlds beyond imagination — from hard sci-fi to epic fantasy, we carry it all for the dreamers.</p>
+          </div>
+        </div>
+
+        <div class="slide" aria-hidden="true">
+          <div class="slide-img" style="background-image:url('images/side_image.webp')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">For the Little Ones</span>
+            <h3 class="slide-title">Children's Books</h3>
+            <p class="slide-desc">Picture books, activity books and early readers — building a love for reading from the very first page.</p>
+          </div>
+        </div>
+
+        <div class="slide" aria-hidden="true">
+          <div class="slide-img" style="background-image:url('images/2ndgoodimage.webp')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">Know Your World</span>
+            <h3 class="slide-title">History &amp; Biography</h3>
+            <p class="slide-desc">True stories of remarkable people and pivotal moments — because the past always has something to teach.</p>
+          </div>
+        </div>
+
+        <div class="slide" aria-hidden="true">
+          <div class="slide-img" style="background-image:url('images/front_main_shop.webp')"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-eyebrow">Spirit &amp; Soul</span>
+            <h3 class="slide-title">Religious &amp; Spiritual</h3>
+            <p class="slide-desc">A wide selection of spiritual texts, religious literature and philosophy — for seekers of all faiths.</p>
+          </div>
+        </div>
+
+      </div><!-- /slider-track -->
+
+      <!-- Dot navigation -->
+      <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Slide navigation">
+        <button class="slider-dot is-active" role="tab" aria-selected="true"  aria-label="Slide 1: Academic"></button>
+        <button class="slider-dot" role="tab" aria-selected="false" aria-label="Slide 2: Fiction"></button>
+        <button class="slider-dot" role="tab" aria-selected="false" aria-label="Slide 3: Classics"></button>
+        <button class="slider-dot" role="tab" aria-selected="false" aria-label="Slide 4: Mystery"></button>
+        <button class="slider-dot" role="tab" aria-selected="false" aria-label="Slide 5: New Releases"></button>
+        <button class="slider-dot" role="tab" aria-selected="false" aria-label="Slide 6: Self-Help"></button>
+        <button class="slider-dot" role="tab" aria-selected="false" aria-label="Slide 7: Sci-Fi"></button>
+        <button class="slider-dot" role="tab" aria-selected="false" aria-label="Slide 8: Children's"></button>
+        <button class="slider-dot" role="tab" aria-selected="false" aria-label="Slide 9: History"></button>
+        <button class="slider-dot" role="tab" aria-selected="false" aria-label="Slide 10: Spiritual"></button>
+      </div>
+
+      <!-- Prev / Next arrows -->
+      <button class="slider-arrow slider-arrow--prev" id="slider-prev" aria-label="Previous slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="slider-arrow slider-arrow--next" id="slider-next" aria-label="Next slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+    </div><!-- /genre-slider -->
+
+    <!-- Pill tags below slider -->
+    <div class="container">
+      <div class="genres-tags reveal">
+        <span class="genre-tag"><span>📚</span> NCERT &amp; Academic</span>
+        <span class="genre-tag"><span>💫</span> Fiction &amp; Novels</span>
+        <span class="genre-tag"><span>🔍</span> Mystery &amp; Thriller</span>
+        <span class="genre-tag"><span>🏛️</span> Classics</span>
+        <span class="genre-tag"><span>🚀</span> Sci-Fi &amp; Fantasy</span>
+        <span class="genre-tag"><span>🧠</span> Self-Help</span>
+        <span class="genre-tag"><span>📖</span> New Releases</span>
+        <span class="genre-tag"><span>🧒</span> Children's Books</span>
+        <span class="genre-tag"><span>🌍</span> History &amp; Biography</span>
+        <span class="genre-tag"><span>🎭</span> Drama &amp; Poetry</span>
+        <span class="genre-tag"><span>💼</span> Business &amp; Finance</span>
+        <span class="genre-tag"><span>🕌</span> Religious &amp; Spiritual</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== VISIT ===== -->
+  <section class="visit" id="visit" aria-labelledby="visit-title">
+    <div class="container">
+
+      <div class="reveal">
+        <p class="section-eyebrow">Find Us</p>
+        <div class="section-rule"></div>
+        <h2 class="section-title" id="visit-title">Come Visit Us</h2>
+        <p class="section-body">We're easy to find on Gandhi Road. Come browse the shelves anytime — give us a call or drop a message before you visit.</p>
+      </div>
+
+      <div class="visit-grid">
+
+        <div class="info-block reveal reveal--left">
+
+          <!-- Address — tapping opens Maps on mobile -->
+          <a class="info-item" href="https://maps.app.goo.gl/u5iPHUiogL23BqKf8" target="_blank" rel="noopener noreferrer">
+            <span class="info-icon" aria-hidden="true">📍</span>
+            <div class="info-content">
+              <strong>Address</strong>
+              <span>16 Seller Kanak Chamber, Gandhi Road,<br>Ahmedabad, Gujarat 380001</span>
+            </div>
+          </a>
+
+          <!-- Phone — tapping opens dialer on mobile -->
+          <a class="info-item" href="tel:+918758585259">
+            <span class="info-icon" aria-hidden="true">📞</span>
+            <div class="info-content">
+              <strong>Phone</strong>
+              <span>087585 85259</span>
+            </div>
+          </a>
+
+          <!-- WhatsApp — tapping opens WhatsApp on mobile -->
+          <a class="info-item" href="https://wa.me/918758585259" target="_blank" rel="noopener noreferrer">
+            <span class="info-icon" aria-hidden="true">💬</span>
+            <div class="info-content">
+              <strong>WhatsApp</strong>
+              <span>+91 87585 85259</span>
+            </div>
+          </a>
+
+          <div class="info-item" style="cursor:default;">
+            <span class="info-icon" aria-hidden="true">📅</span>
+            <div class="info-content">
+              <strong>Established</strong>
+              <span>21 June 1982</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!--
+          ADD A MAP SCREENSHOT OR STORE EXTERIOR:
+          style="background-image: url('images/map.jpg')"
+          on the .map-body div below.
+        -->
+        <div class="map-card reveal reveal--right">
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.974927137791!2d72.5894517!3d23.024692799999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8559ce1ccec5%3A0x47fc91639edc751f!2sSagar%20Book%20Centre!5e0!3m2!1sen!2sin!4v1786633209586!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Sagar Book Centre location on Google Maps"
+            ></iframe>
+          </div>
+          <div class="map-footer">
+            <a href="https://maps.app.goo.gl/u5iPHUiogL23BqKf8"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Open location in Google Maps">
+              Open in Google Maps
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Contact action buttons -->
+      <div class="visit-actions reveal">
+        <a href="tel:+918758585259" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          Call Us
+        </a>
+        <a href="https://wa.me/918758585259" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+        <a href="https://maps.app.goo.gl/u5iPHUiogL23BqKf8" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Get Directions
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner reveal">
+      <img src="images/logo.jpg" alt="Sagar Book Centre logo" class="footer-logo" />
+      <p class="footer-name">Sagar Book Centre</p>
+      <div class="footer-rule"></div>
+      <p class="footer-since">Serving readers in Ahmedabad since 1982</p>
+      <p class="footer-address">Gandhi Road · Ahmedabad, Gujarat 380001</p>
+      <div class="footer-contacts">
+        <a href="tel:+918758585259" aria-label="Call us">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          087585 85259
+        </a>
+        <a href="https://wa.me/918758585259" target="_blank" rel="noopener" aria-label="WhatsApp us">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <p class="footer-bottom">&copy; 2026 Sagar Book Centre. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // ── Theme toggle ──
+    (function () {
+      var html   = document.documentElement;
+      var btn    = document.getElementById('theme-toggle');
+      var DARK   = 'dark';
+      var LIGHT  = 'light';
+      var KEY    = 'sbc-theme';
+
+      function getTheme() {
+        return html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      }
+
+      function setTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        try { localStorage.setItem(KEY, theme); } catch (e) {}
+        btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+      }
+
+      btn.addEventListener('click', function () {
+        setTheme(getTheme() === LIGHT ? DARK : LIGHT);
+      });
+
+      // set correct aria-label on load
+      btn.setAttribute('aria-label', getTheme() === LIGHT ? 'Switch to dark mode' : 'Switch to light mode');
+    })();
+
+    // ── Scroll reveal ──
+    (function () {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.reveal, .stagger').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+
+    // ── Genre Slider ──
+    (function () {
+      var slider   = document.getElementById('genre-slider');
+      var track    = document.getElementById('slider-track');
+      var dots     = document.querySelectorAll('.slider-dot');
+      var fill     = document.getElementById('slider-progress-fill');
+      var prevBtn  = document.getElementById('slider-prev');
+      var nextBtn  = document.getElementById('slider-next');
+      var slides   = document.querySelectorAll('.slide');
+      var total    = slides.length;
+      var current  = 0;
+      var DURATION = 4000; // ms per slide
+      var timer    = null;
+      var startTime = null;
+      var rafId    = null;
+      var paused   = false;
+
+      function goTo(index) {
+        slides[current].setAttribute('aria-hidden', 'true');
+        dots[current].classList.remove('is-active');
+        dots[current].setAttribute('aria-selected', 'false');
+
+        current = (index + total) % total;
+
+        slides[current].setAttribute('aria-hidden', 'false');
+        dots[current].classList.add('is-active');
+        dots[current].setAttribute('aria-selected', 'true');
+
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+
+        resetTimer();
+      }
+
+      function resetTimer() {
+        cancelAnimationFrame(rafId);
+        clearTimeout(timer);
+        startTime = performance.now();
+        if (!paused) animateProgress();
+      }
+
+      function animateProgress() {
+        rafId = requestAnimationFrame(function tick(now) {
+          var elapsed = now - startTime;
+          var pct = Math.min((elapsed / DURATION) * 100, 100);
+          fill.style.width = pct + '%';
+
+          if (elapsed >= DURATION) {
+            goTo(current + 1);
+          } else {
+            rafId = requestAnimationFrame(tick);
+          }
+        });
+      }
+
+      // pause on hover / focus
+      slider.addEventListener('mouseenter', function () {
+        paused = true;
+        cancelAnimationFrame(rafId);
+        clearTimeout(timer);
+      });
+      slider.addEventListener('mouseleave', function () {
+        paused = false;
+        startTime = performance.now() - (parseFloat(fill.style.width || 0) / 100 * DURATION);
+        animateProgress();
+      });
+
+      // dot clicks
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () { goTo(i); });
+      });
+
+      // arrow clicks
+      prevBtn.addEventListener('click', function () { goTo(current - 1); });
+      nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+      // touch swipe
+      var touchStartX = 0;
+      slider.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].clientX;
+      }, { passive: true });
+      slider.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+      }, { passive: true });
+
+      // kick off
+      resetTimer();
+    })();
+    (function () {
+      var btn     = document.getElementById('nav-hamburger');
+      var drawer  = document.getElementById('nav-drawer');
+      var overlay = document.getElementById('nav-overlay');
+
+      function openMenu() {
+        drawer.classList.add('is-open');
+        overlay.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        drawer.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', function () {
+        btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+      });
+
+      overlay.addEventListener('click', closeMenu);
+
+      drawer.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+    })();
+  </script>
+
+</body>
+</html>
