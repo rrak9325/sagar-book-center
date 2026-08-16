@@ -428,6 +428,53 @@ nav {
   to   { opacity: 0.55; width: 40px; }
 }
 
+/* ── Scroll indicator ── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(237, 232, 223, 0.55);
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.3s;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--ease) 1.2s forwards;
+  z-index: 2;
+}
+
+.scroll-indicator:hover {
+  color: var(--gold);
+}
+
+.scroll-indicator-text {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.scroll-indicator-arrow {
+  animation: scrollBounce 1.8s var(--ease) infinite;
+  display: flex;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0);    opacity: 0.55; }
+  50%       { transform: translateY(7px); opacity: 1;    }
+}
+
+/* light theme — darker text on light hero */
+[data-theme="light"] .scroll-indicator {
+  color: rgba(44, 26, 10, 0.45);
+}
+[data-theme="light"] .scroll-indicator:hover {
+  color: var(--gold);
+}
+
 /* =========================================
    BUTTONS
    ========================================= */
