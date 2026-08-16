@@ -184,25 +184,20 @@
       </a>
     </div>
 
-    <!-- Scroll indicator — mouse+text on desktop, swipe hand on mobile -->
+    <!-- Scroll indicator -->
     <a href="#about" class="scroll-indicator" id="scroll-indicator" aria-label="Scroll down">
-      <!-- desktop version -->
+      <!-- desktop: mouse + chevrons -->
       <span class="scroll-indicator-text scroll-desktop">Scroll</span>
       <span class="scroll-indicator-mouse scroll-desktop" aria-hidden="true"></span>
       <span class="scroll-indicator-chevrons scroll-desktop" aria-hidden="true">
         <span></span><span></span><span></span>
       </span>
-      <!-- mobile version: swipe up hand -->
-      <span class="scroll-mobile" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="scroll-hand-icon">
-          <path d="M10 3.5a1.5 1.5 0 0 1 3 0V9a1 1 0 0 1 2 0v1a1 1 0 0 1 2 0v1a1 1 0 0 1 2 0v4c0 2.761-2.239 5-5 5h-4a5 5 0 0 1-4.995-4.773L5 15.5v-5a1.5 1.5 0 0 1 2.996-.144L8 10.5V8a1.5 1.5 0 0 1 2-1.415V3.5z" opacity="0.9"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="scroll-swipe-arrow">
-          <line x1="12" y1="19" x2="12" y2="5"/>
-          <polyline points="5 12 12 5 19 12"/>
-        </svg>
+      <!-- mobile: two bouncing chevrons + label -->
+      <span class="scroll-mobile-chevrons scroll-mobile" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </span>
-      <span class="scroll-indicator-text scroll-mobile" style="font-size:0.58rem;">Swipe Up</span>
+      <span class="scroll-indicator-text scroll-mobile">Scroll</span>
     </a>
   </header>
 
