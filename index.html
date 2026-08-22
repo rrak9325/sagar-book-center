@@ -25,9 +25,11 @@
 
   <title>Sagar Book Centre | Ahmedabad</title>
   <link rel="canonical" href="https://www.sagarbook.com" />
-  <!-- Favicon — logo shows in browser tab + Google Search -->
-  <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
-  <link rel="apple-touch-icon" href="images/logo.jpg" />
+  <!-- Favicon — multiple sizes so Google Search picks up the logo correctly -->
+  <link rel="icon" type="image/png" sizes="32x32"  href="images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/logo-192.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="images/logo-192.png" />
+  <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#a0621a" />
   <!-- Preload hero image — above the fold, most important asset -->
   <link rel="preload" as="image" href="images/front_main_shop.webp" />
@@ -43,6 +45,12 @@
     "@context": "https://schema.org",
     "@type": "BookStore",
     "name": "Sagar Book Centre",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sagarbook.com/images/logo-512.png",
+      "width": 512,
+      "height": 512
+    },
     "image": "https://www.sagarbook.com/images/new-sagarbook-card.jpg",
     "url": "https://www.sagarbook.com",
     "telephone": "+918758585259",
@@ -93,6 +101,9 @@
       }
     })();
   </script>
+  <!-- GSAP + ScrollTrigger — premium animation engine -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -104,6 +115,7 @@
     </a>
     <ul class="nav-links" id="nav-links">
       <li><a href="#about" class="nav-link-item">About</a></li>
+      <li><a href="#newbooks" class="nav-link-item">New Books</a></li>
       <li><a href="#genres" class="nav-link-item">Collection</a></li>
       <li><a href="#visit" class="nav-link-item">Visit</a></li>
       <li><a href="tel:+918758585259" class="nav-cta">Call Us</a></li>
@@ -154,50 +166,41 @@
   <div class="nav-overlay" id="nav-overlay"></div>
 
   <!-- ===== HERO ===== -->
-  <!--
-    ADD YOUR HERO IMAGE:
-    style="background-image: url('images/hero.jpg')"
-  -->
   <header class="hero" role="banner" style="background-image: url('images/front_main_shop.webp')">
-    <div class="hero-eyebrow">Est. 21 June 1982 &nbsp;·&nbsp; Ahmedabad, Gujarat</div>
-    <h1><span id="typewriter"></span><span class="typewriter-cursor">|</span></h1>
-    <div class="typewriter-font-label" id="typewriter-font-label" aria-hidden="true"></div>
-    <p class="hero-location">Gandhi Road &nbsp;·&nbsp; Ahmedabad</p>
-    <div class="hero-divider"></div>
-    <p class="hero-tagline">"Find your escape and get lost in a good story."</p>
-    <div class="hero-cta-group">
-      <!-- tel: opens phone dialer directly on mobile -->
-      <a href="tel:+918758585259" class="btn btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-        Call Now
-      </a>
-      <!-- wa.me opens WhatsApp chat directly -->
-      <a href="https://wa.me/918758585259" target="_blank" rel="noopener" class="btn btn-whatsapp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-      <!-- Google Maps short link — opens in Maps app on mobile -->
-      <a href="https://maps.app.goo.gl/u5iPHUiogL23BqKf8" target="_blank" rel="noopener" class="btn btn-ghost">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        Directions
-      </a>
+
+    <!-- animated background grain overlay -->
+    <div class="hero-grain" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-line"></span>
+        Est. 21 June 1982 &nbsp;·&nbsp; Ahmedabad, Gujarat
+        <span class="hero-eyebrow-line"></span>
+      </div>
+
+      <h1 class="hero-title">
+        <span id="typewriter"></span><span class="typewriter-cursor">|</span>
+      </h1>
+      <div class="typewriter-font-label" id="typewriter-font-label" aria-hidden="true"></div>
+
+      <p class="hero-location">Gandhi Road &nbsp;·&nbsp; Ahmedabad</p>
+
+      <div class="hero-divider-wrap" aria-hidden="true">
+        <span class="hero-divider-line"></span>
+        <span class="hero-divider-dot"></span>
+        <span class="hero-divider-line"></span>
+      </div>
+
+      <p class="hero-tagline">"Find your escape and get lost in a good story."</p>
+
+      <div class="hero-badges">
+        <span class="hero-badge">📚 NCERT &amp; Academic</span>
+        <span class="hero-badge">📖 New Releases</span>
+        <span class="hero-badge">🏛️ Classics</span>
+        <span class="hero-badge">✨ Since 1982</span>
+      </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <a href="#about" class="scroll-indicator" id="scroll-indicator" aria-label="Scroll down">
-      <!-- desktop: mouse + chevrons -->
-      <span class="scroll-indicator-text scroll-desktop">Scroll</span>
-      <span class="scroll-indicator-mouse scroll-desktop" aria-hidden="true"></span>
-      <span class="scroll-indicator-chevrons scroll-desktop" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </span>
-      <!-- mobile: two bouncing chevrons + label -->
-      <span class="scroll-mobile-chevrons scroll-mobile" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </span>
-      <span class="scroll-indicator-text scroll-mobile">Scroll</span>
-    </a>
   </header>
 
   <!-- ===== ABOUT ===== -->
@@ -240,6 +243,88 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ===== NEW BOOKS ===== -->
+  <section class="newbooks" id="newbooks" aria-labelledby="newbooks-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-eyebrow">Fresh Arrivals</p>
+        <div class="section-rule"></div>
+        <h2 class="section-title" id="newbooks-title">Books We're Stocking Right Now</h2>
+        <p class="section-body">From competitive exam prep to medical references and economics — real titles, currently available at the shop.</p>
+      </div>
+
+      <div class="newbooks-grid stagger">
+
+        <div class="book-card">
+          <div class="book-card-img">
+            <img src="books-images/20 GSET book.jpg" alt="GSET Exam Book" loading="lazy" />
+            <span class="book-card-badge">In Stock</span>
+          </div>
+          <div class="book-card-info">
+            <span class="book-card-genre">Competitive Exam</span>
+            <p class="book-card-label">GSET Preparation Guide</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-card-img">
+            <img src="books-images/Bharatni Bhugol (Geography of India).jpg" alt="Bharatni Bhugol — Geography of India" loading="lazy" />
+          </div>
+          <div class="book-card-info">
+            <span class="book-card-genre">Geography</span>
+            <p class="book-card-label">Bharatni Bhugol — Geography of India</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-card-img">
+            <img src="books-images/General anotomy BD chaurasia.jpg" alt="BD Chaurasia General Anatomy" loading="lazy" />
+            <span class="book-card-badge">Popular</span>
+          </div>
+          <div class="book-card-info">
+            <span class="book-card-genre">Medical</span>
+            <p class="book-card-label">BD Chaurasia — General Anatomy</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-card-img">
+            <img src="books-images/HTAT book.jpg" alt="HTAT Exam Book" loading="lazy" />
+            <span class="book-card-badge">In Stock</span>
+          </div>
+          <div class="book-card-info">
+            <span class="book-card-genre">Competitive Exam</span>
+            <p class="book-card-label">HTAT Preparation Guide</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-card-img">
+            <img src="books-images/Municipal Accountant - Khisabni Adhikari & Sub Auditor.jpg" alt="Municipal Accountant — Khisabni Adhikari" loading="lazy" />
+          </div>
+          <div class="book-card-info">
+            <span class="book-card-genre">Government Exams</span>
+            <p class="book-card-label">Municipal Accountant &amp; Sub Auditor</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-card-img">
+            <img src="books-images/principles of Economics 3rd Edition N. Gregory Mankiw.jpg" alt="Principles of Economics — Mankiw" loading="lazy" />
+            <span class="book-card-badge">New</span>
+          </div>
+          <div class="book-card-info">
+            <span class="book-card-genre">Economics</span>
+            <p class="book-card-label">Principles of Economics — Mankiw 3rd Ed.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="newbooks-note reveal">Drop by the shop — our shelves change every week. Call us to check availability.</p>
     </div>
   </section>
 
@@ -583,22 +668,170 @@
       }
     })();
 
-    // ── Scroll reveal ──
+    // ── GSAP Animations ──
     (function () {
-      var observer = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
+      if (typeof gsap === 'undefined') return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // shared ease used everywhere
+      var ease = 'power3.out';
+
+      // ── 1. HERO — staggered timeline on load ──
+      // elements start invisible in CSS (opacity:0), GSAP takes over
+      var heroTl = gsap.timeline({ delay: 0.1 });
+
+      heroTl
+        .fromTo('.hero-eyebrow',
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.8, ease: ease })
+        .fromTo('.hero-title',
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.9, ease: ease }, '-=0.5')
+        .fromTo('.typewriter-font-label',
+          { opacity: 0 },
+          { opacity: 1, duration: 0.4, ease: 'none' }, '-=0.2')
+        .fromTo('.hero-location',
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.7, ease: ease }, '-=0.4')
+        .fromTo('.hero-divider-wrap',
+          { opacity: 0, scaleX: 0 },
+          { opacity: 1, scaleX: 1, duration: 0.8, ease: 'expo.out', transformOrigin: 'center' }, '-=0.3')
+        .fromTo('.hero-tagline',
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.7, ease: ease }, '-=0.4')
+        .fromTo('.hero-badges .hero-badge',
+          { opacity: 0, y: 12, scale: 0.9 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.4)', stagger: 0.1 }, '-=0.3');
+
+      // ── 2. NAV — subtle slide down on load ──
+      gsap.fromTo('nav',
+        { y: -64, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: ease, delay: 0.05 });
+
+      // ── 3. SCROLL-TRIGGERED SECTIONS ──
+      // Generic fade-up for all .reveal elements
+      gsap.utils.toArray('.reveal').forEach(function (el) {
+        var dir = el.classList.contains('reveal--left') ? -40
+                : el.classList.contains('reveal--right') ? 40
+                : 0;
+        gsap.fromTo(el,
+          { opacity: 0, x: dir, y: dir === 0 ? 40 : 0 },
+          {
+            opacity: 1, x: 0, y: 0,
+            duration: 0.85,
+            ease: ease,
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              toggleActions: 'play none none none'
             }
           });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-      );
-      document.querySelectorAll('.reveal, .stagger').forEach(function (el) {
-        observer.observe(el);
       });
+
+      // Staggered children — .stagger containers
+      gsap.utils.toArray('.stagger').forEach(function (container) {
+        var children = container.children;
+        gsap.fromTo(children,
+          { opacity: 0, y: 32 },
+          {
+            opacity: 1, y: 0,
+            duration: 0.7,
+            ease: ease,
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: container,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          });
+      });
+
+      // ── 4. BOOK CARDS — stagger with slight rotation (premium feel) ──
+      gsap.fromTo('.book-card',
+        { opacity: 0, y: 50, rotateY: 8 },
+        {
+          opacity: 1, y: 0, rotateY: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+          stagger: { amount: 0.5, from: 'start' },
+          scrollTrigger: {
+            trigger: '.newbooks-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        });
+
+      // ── 5. SECTION EYEBROWS — gold line draws in ──
+      gsap.utils.toArray('.section-rule').forEach(function (rule) {
+        gsap.fromTo(rule,
+          { scaleX: 0, transformOrigin: 'left center' },
+          {
+            scaleX: 1,
+            duration: 0.7,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: rule,
+              start: 'top 90%',
+              toggleActions: 'play none none none'
+            }
+          });
+      });
+
+      // ── 6. STAT NUMBERS — count up animation ──
+      gsap.utils.toArray('.stat-number').forEach(function (el) {
+        var raw   = el.textContent;
+        var isYrs = el.id === 'years-stat';
+        var num   = parseInt(raw);
+        if (isNaN(num)) return;
+        gsap.fromTo({ val: 0 },
+          { val: 0 },
+          {
+            val: num,
+            duration: 1.8,
+            ease: 'power1.out',
+            snap: { val: 1 },
+            onUpdate: function () {
+              el.textContent = Math.round(this.targets()[0].val) + (raw.includes('+') ? '+' : '');
+            },
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          });
+      });
+
+      // ── 7. GENRE TAGS — wave stagger ──
+      gsap.fromTo('.genre-tag',
+        { opacity: 0, scale: 0.8, y: 10 },
+        {
+          opacity: 1, scale: 1, y: 0,
+          duration: 0.4,
+          ease: 'back.out(1.6)',
+          stagger: { amount: 0.6, from: 'start' },
+          scrollTrigger: {
+            trigger: '.genres-tags',
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          }
+        });
+
+      // ── 8. INFO ITEMS — slide in from left ──
+      gsap.fromTo('.info-item',
+        { opacity: 0, x: -24 },
+        {
+          opacity: 1, x: 0,
+          duration: 0.55,
+          ease: ease,
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: '.info-block',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        });
+
     })();
 
     // ── Typewriter with rotating fonts + colors ──
@@ -673,18 +906,6 @@
       // set initial style and kick off
       applyStyle(0);
       setTimeout(tick, 600);
-    })();
-
-    // ── Scroll indicator fade out ──
-    (function () {
-      var indicator = document.getElementById('scroll-indicator');
-      if (!indicator) return;
-      window.addEventListener('scroll', function () {
-        var scrolled = window.scrollY;
-        var opacity = Math.max(0, 1 - scrolled / 180);
-        indicator.style.opacity = opacity;
-        indicator.style.pointerEvents = opacity < 0.1 ? 'none' : 'auto';
-      }, { passive: true });
     })();
 
     // ── Genre Slider ──
