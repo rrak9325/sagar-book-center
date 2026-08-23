@@ -165,10 +165,11 @@ img { display: block; max-width: 100%; }
 .container { max-width: 1080px; margin: 0 auto; }
 
 /* GSAP handles all reveal/stagger animations — initial states only */
-.reveal, .stagger > * { opacity: 0; }
+/* pointer-events:none prevents invisible elements from intercepting taps */
+.reveal, .stagger > * { opacity: 0; pointer-events: none; }
 .hero-eyebrow, .hero-title, .hero-location,
 .hero-divider-wrap, .hero-tagline, .hero-badges,
-.book-card, .genre-tag { opacity: 0; }
+.book-card, .genre-tag { opacity: 0; pointer-events: none; }
 nav { opacity: 0; }
 
 /* reduced motion — show everything immediately, skip all animation */
@@ -176,7 +177,11 @@ nav { opacity: 0; }
   .reveal, .stagger > *,
   .hero-eyebrow, .hero-title, .hero-location,
   .hero-divider-wrap, .hero-tagline, .hero-badges,
-  .book-card, .genre-tag, nav { opacity: 1 !important; transform: none !important; }
+  .book-card, .genre-tag, nav {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
 }
 
 

@@ -684,7 +684,8 @@
       heroTl
         .fromTo('.hero-eyebrow',
           { opacity: 0, y: 18 },
-          { opacity: 1, y: 0, duration: 0.8, ease: ease })
+          { opacity: 1, y: 0, duration: 0.8, ease: ease,
+            onComplete: function() { gsap.set('.hero-eyebrow', { pointerEvents: 'auto' }); } })
         .fromTo('.hero-title',
           { opacity: 0, y: 28 },
           { opacity: 1, y: 0, duration: 0.9, ease: ease }, '-=0.5')
@@ -702,7 +703,12 @@
           { opacity: 1, y: 0, duration: 0.7, ease: ease }, '-=0.4')
         .fromTo('.hero-badges .hero-badge',
           { opacity: 0, y: 12, scale: 0.9 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.4)', stagger: 0.1 }, '-=0.3');
+          { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.4)', stagger: 0.1,
+            onComplete: function() {
+              // restore pointer-events on all hero inner elements
+              gsap.set('.hero-inner, .hero-inner *', { pointerEvents: 'auto' });
+            }
+          }, '-=0.3');
 
       // ── 2. NAV — subtle slide down on load ──
       gsap.fromTo('nav',
@@ -721,6 +727,7 @@
             opacity: 1, x: 0, y: 0,
             duration: 0.85,
             ease: ease,
+            onComplete: function() { gsap.set(el, { pointerEvents: 'auto', clearProps: 'transform' }); },
             scrollTrigger: {
               trigger: el,
               start: 'top 88%',
@@ -739,6 +746,7 @@
             duration: 0.7,
             ease: ease,
             stagger: 0.1,
+            onComplete: function() { gsap.set(children, { pointerEvents: 'auto', clearProps: 'transform' }); },
             scrollTrigger: {
               trigger: container,
               start: 'top 85%',
@@ -755,6 +763,7 @@
           duration: 0.75,
           ease: 'power2.out',
           stagger: { amount: 0.5, from: 'start' },
+          onComplete: function() { gsap.set('.book-card', { pointerEvents: 'auto', clearProps: 'transform' }); },
           scrollTrigger: {
             trigger: '.newbooks-grid',
             start: 'top 85%',
@@ -810,6 +819,7 @@
           duration: 0.4,
           ease: 'back.out(1.6)',
           stagger: { amount: 0.6, from: 'start' },
+          onComplete: function() { gsap.set('.genre-tag', { pointerEvents: 'auto', clearProps: 'transform' }); },
           scrollTrigger: {
             trigger: '.genres-tags',
             start: 'top 88%',
