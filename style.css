@@ -1513,7 +1513,9 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .nav-drawer { transition: none !important; }
   .book-note-book,
-  .book-note-shelf-line { animation: none !important; }
+  .book-note-shelf-line,
+  .book-note-orbit,
+  .book-note-spark { animation: none !important; }
 }
 
 /* ===== Editorial refinements ===== */
@@ -1615,12 +1617,54 @@ footer {
 .book-note-shelf {
   justify-self: end;
   width: min(100%, 310px);
-  min-height: 260px;
+  min-height: 300px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  isolation: isolate;
 }
+
+.book-note-orbit {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  border: 1px solid var(--gold-light);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.book-note-orbit--outer {
+  width: 300px;
+  height: 150px;
+  transform: translate(-50%, -50%) rotate(-16deg);
+  animation: orbitDrift 11s linear infinite;
+}
+
+.book-note-orbit--inner {
+  width: 230px;
+  height: 112px;
+  transform: translate(-50%, -50%) rotate(28deg);
+  opacity: 0.18;
+  animation: orbitDriftReverse 8s linear infinite;
+}
+
+@keyframes orbitDrift { to { transform: translate(-50%, -50%) rotate(344deg); } }
+@keyframes orbitDriftReverse { to { transform: translate(-50%, -50%) rotate(-332deg); } }
+
+.book-note-spark {
+  position: absolute;
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  z-index: 4;
+  animation: sparkBreath 3s ease-in-out infinite;
+}
+
+.book-note-spark--one { top: 28%; right: 8%; }
+.book-note-spark--two { bottom: 26%; left: 3%; animation-delay: 1s; }
+
+@keyframes sparkBreath { 0%, 100% { opacity: 0.25; transform: scale(0.8) rotate(0); } 50% { opacity: 0.9; transform: scale(1.15) rotate(20deg); } }
 
 .book-note-books {
   display: flex;
@@ -1644,12 +1688,14 @@ footer {
 .book-note-book--one { transform: rotate(-10deg) translate(12px, 10px); animation: shelfFloatOne 5s ease-in-out infinite; }
 .book-note-book--two { height: 190px; z-index: 2; transform: rotate(2deg); animation: shelfFloatTwo 5.5s ease-in-out 0.4s infinite; }
 .book-note-book--three { transform: rotate(11deg) translate(-12px, 8px); animation: shelfFloatThree 4.8s ease-in-out 0.7s infinite; }
+.book-note-book--four { width: 64px; height: 120px; transform: rotate(15deg) translate(-22px, 19px); animation: shelfFloatFour 5.2s ease-in-out 0.9s infinite; }
 
 .book-note-book:hover { transform: translateY(-12px) rotate(0deg) scale(1.04); z-index: 3; }
 
 @keyframes shelfFloatOne { 0%, 100% { transform: rotate(-10deg) translate(12px, 10px); } 50% { transform: rotate(-7deg) translate(12px, 2px); } }
 @keyframes shelfFloatTwo { 0%, 100% { transform: rotate(2deg); } 50% { transform: rotate(0deg) translateY(-8px); } }
 @keyframes shelfFloatThree { 0%, 100% { transform: rotate(11deg) translate(-12px, 8px); } 50% { transform: rotate(8deg) translate(-12px, 0); } }
+@keyframes shelfFloatFour { 0%, 100% { transform: rotate(15deg) translate(-22px, 19px); } 50% { transform: rotate(12deg) translate(-22px, 8px); } }
 
 .book-note-shelf-line {
   position: absolute;
@@ -1687,6 +1733,9 @@ footer {
   .book-note-books { height: 170px; }
   .book-note-book { width: 66px; height: 124px; }
   .book-note-book--two { height: 150px; }
+  .book-note-book--four { width: 52px; height: 96px; }
+  .book-note-orbit--outer { width: 260px; }
+  .book-note-orbit--inner { width: 200px; }
   .book-note::before { right: 1.25rem; }
   .about-inner { min-height: 0; }
   .book-card-info { min-height: 150px; }
