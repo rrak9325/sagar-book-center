@@ -35,8 +35,8 @@
   <link rel="preload" as="image" href="images/front_main_shop.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Main fonts + typewriter rotation fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cinzel:wght@700&family=Bebas+Neue&family=Dancing+Script:wght@700&family=Abril+Fatface&family=Righteous&family=Permanent+Marker&family=Satisfy&display=swap" />
+  <!-- Editorial type pairing: one expressive serif, one restrained sans -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" />
   <link rel="stylesheet" href="style.css" />
 
   <!-- Schema.org LocalBusiness structured data -->
@@ -120,7 +120,7 @@
       <li><a href="#visit" class="nav-link-item">Visit</a></li>
       <li><a href="tel:+918758585259" class="nav-cta">Call Us</a></li>
     </ul>
-    <div style="display:flex;align-items:center;gap:0.6rem;">
+    <div class="nav-tools">
       <!-- theme toggle -->
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
         <!-- moon — shown in dark mode -->
@@ -169,9 +169,6 @@
   <!-- ===== HERO ===== -->
   <header class="hero" role="banner" style="background-image: url('images/front_main_shop.webp')">
 
-    <!-- animated background grain overlay -->
-    <div class="hero-grain" aria-hidden="true"></div>
-
     <div class="hero-inner">
       <div class="hero-eyebrow">
         <span class="hero-eyebrow-line"></span>
@@ -179,10 +176,7 @@
         <span class="hero-eyebrow-line"></span>
       </div>
 
-      <h1 class="hero-title">
-        <span id="typewriter">Sagar Book Centre</span><span class="typewriter-cursor">|</span>
-      </h1>
-      <div class="typewriter-font-label" id="typewriter-font-label" aria-hidden="true"></div>
+      <h1 class="hero-title">Sagar Book Centre</h1>
 
       <p class="hero-location">Gandhi Road &nbsp;·&nbsp; Ahmedabad</p>
 
@@ -205,12 +199,7 @@
         </a>
       </div>
 
-      <div class="hero-badges">
-        <span class="hero-badge">📚 NCERT &amp; Academic</span>
-        <span class="hero-badge">📖 New Releases</span>
-        <span class="hero-badge">🏛️ Classics</span>
-        <span class="hero-badge">✨ Since 1982</span>
-      </div>
+      <p class="hero-footnote"><span>01</span> Independent bookseller <i></i> Gandhi Road, Ahmedabad</p>
     </div>
 
   </header>
@@ -521,21 +510,21 @@
 
     </div><!-- /genre-slider -->
 
-    <!-- Pill tags below slider -->
+    <!-- Editorial index below slider -->
     <div class="container">
       <div class="genres-tags reveal">
-        <span class="genre-tag"><span>📚</span> NCERT &amp; Academic</span>
-        <span class="genre-tag"><span>💫</span> Fiction &amp; Novels</span>
-        <span class="genre-tag"><span>🔍</span> Mystery &amp; Thriller</span>
-        <span class="genre-tag"><span>🏛️</span> Classics</span>
-        <span class="genre-tag"><span>🚀</span> Sci-Fi &amp; Fantasy</span>
-        <span class="genre-tag"><span>🧠</span> Self-Help</span>
-        <span class="genre-tag"><span>📖</span> New Releases</span>
-        <span class="genre-tag"><span>🧒</span> Children's Books</span>
-        <span class="genre-tag"><span>🌍</span> History &amp; Biography</span>
-        <span class="genre-tag"><span>🎭</span> Drama &amp; Poetry</span>
-        <span class="genre-tag"><span>💼</span> Business &amp; Finance</span>
-        <span class="genre-tag"><span>🕌</span> Religious &amp; Spiritual</span>
+        <span class="genre-tag"><b>01</b> NCERT &amp; Academic</span>
+        <span class="genre-tag"><b>02</b> Fiction &amp; Novels</span>
+        <span class="genre-tag"><b>03</b> Mystery &amp; Thriller</span>
+        <span class="genre-tag"><b>04</b> Classics</span>
+        <span class="genre-tag"><b>05</b> Sci-Fi &amp; Fantasy</span>
+        <span class="genre-tag"><b>06</b> Self-Help</span>
+        <span class="genre-tag"><b>07</b> New Releases</span>
+        <span class="genre-tag"><b>08</b> Children's Books</span>
+        <span class="genre-tag"><b>09</b> History &amp; Biography</span>
+        <span class="genre-tag"><b>10</b> Drama &amp; Poetry</span>
+        <span class="genre-tag"><b>11</b> Business &amp; Finance</span>
+        <span class="genre-tag"><b>12</b> Religious &amp; Spiritual</span>
       </div>
     </div>
 
@@ -558,7 +547,7 @@
 
           <!-- Address — tapping opens Maps on mobile -->
           <a class="info-item" href="https://maps.app.goo.gl/u5iPHUiogL23BqKf8" target="_blank" rel="noopener noreferrer">
-            <span class="info-icon" aria-hidden="true">📍</span>
+            <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2"/></svg></span>
             <div class="info-content">
               <strong>Address</strong>
               <span>16 Seller Kanak Chamber, Gandhi Road,<br>Ahmedabad, Gujarat 380001</span>
@@ -567,7 +556,7 @@
 
           <!-- Phone — tapping opens dialer on mobile -->
           <a class="info-item" href="tel:+918758585259">
-            <span class="info-icon" aria-hidden="true">📞</span>
+            <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 3.8 9 3l2 5-2.1 1.6a14.7 14.7 0 0 0 5.5 5.5L16 13l5 2-.8 2.4A3 3 0 0 1 17.4 20C9.8 19.3 4.7 14.2 4 6.6a3 3 0 0 1 2.6-2.8Z"/></svg></span>
             <div class="info-content">
               <strong>Phone</strong>
               <span>087585 85259</span>
@@ -576,7 +565,7 @@
 
           <!-- WhatsApp — tapping opens WhatsApp on mobile -->
           <a class="info-item" href="https://wa.me/918758585259" target="_blank" rel="noopener noreferrer">
-            <span class="info-icon" aria-hidden="true">💬</span>
+            <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5 4v-4.2a2.5 2.5 0 0 1-1-2V5.5Z"/></svg></span>
             <div class="info-content">
               <strong>WhatsApp</strong>
               <span>+91 87585 85259</span>
@@ -584,7 +573,7 @@
           </a>
 
           <div class="info-item" style="cursor:default;">
-            <span class="info-icon" aria-hidden="true">📅</span>
+            <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M8 3v4M16 3v4M4 9h16"/></svg></span>
             <div class="info-content">
               <strong>Established</strong>
               <span>21 June 1982</span>
@@ -714,6 +703,17 @@
       btn.setAttribute('aria-label', getTheme() === LIGHT ? 'Switch to dark mode' : 'Switch to light mode');
     })();
 
+    // ── Navigation changes from hero overlay to reading bar ──
+    (function () {
+      var nav = document.querySelector('nav');
+      if (!nav) return;
+      function updateNav() {
+        nav.classList.toggle('is-scrolled', window.scrollY > 48);
+      }
+      updateNav();
+      window.addEventListener('scroll', updateNav, { passive: true });
+    })();
+
     // ── Years of service — auto-updates every year ──
     (function () {
       var el = document.getElementById('years-stat');
@@ -744,9 +744,6 @@
         .fromTo('.hero-title',
           { opacity: 0, y: 28 },
           { opacity: 1, y: 0, duration: 0.9, ease: ease }, '-=0.5')
-        .fromTo('.typewriter-font-label',
-          { opacity: 0 },
-          { opacity: 1, duration: 0.4, ease: 'none' }, '-=0.2')
         .fromTo('.hero-location',
           { opacity: 0, y: 14 },
           { opacity: 1, y: 0, duration: 0.7, ease: ease }, '-=0.4')
@@ -756,14 +753,9 @@
         .fromTo('.hero-tagline',
           { opacity: 0, y: 14 },
           { opacity: 1, y: 0, duration: 0.7, ease: ease }, '-=0.4')
-        .fromTo('.hero-badges .hero-badge',
-          { opacity: 0, y: 12, scale: 0.9 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.4)', stagger: 0.1,
-            onComplete: function() {
-              // restore pointer-events on all hero inner elements
-              gsap.set('.hero-inner, .hero-inner *', { pointerEvents: 'auto' });
-            }
-          }, '-=0.3');
+        .fromTo('.hero-footnote',
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.7, ease: ease }, '-=0.3');
 
       // ── 2. NAV — subtle slide down on load ──
       gsap.fromTo('nav',
@@ -899,80 +891,6 @@
 
     })();
 
-    // ── Typewriter with rotating fonts + colors ──
-    (function () {
-      var el        = document.getElementById('typewriter');
-      var label     = document.getElementById('typewriter-font-label');
-      if (!el) return;
-
-      var text      = 'Sagar Book Centre';
-      var i         = 0;
-      var deleting  = false;
-      var fontIndex = 0;
-
-      // Each entry: font-family, display name, color
-      var styles = [
-        { font: "'Playfair Display', serif",  name: 'Playfair Display',  color: '#c9a96e' },
-        { font: "'Cinzel', serif",             name: 'Cinzel',            color: '#e8c97a' },
-        { font: "'Bebas Neue', sans-serif",    name: 'Bebas Neue',        color: '#e07a5f' },
-        { font: "'Dancing Script', cursive",   name: 'Dancing Script',    color: '#81b29a' },
-        { font: "'Abril Fatface', serif",      name: 'Abril Fatface',     color: '#f2cc8f' },
-        { font: "'Righteous', sans-serif",     name: 'Righteous',         color: '#7ec8e3' },
-        { font: "'Permanent Marker', cursive", name: 'Permanent Marker',  color: '#d4a373' },
-        { font: "'Satisfy', cursive",          name: 'Satisfy',           color: '#c77dff' },
-      ];
-
-      var PAUSE_FULL  = 2200;
-      var PAUSE_EMPTY = 350;
-      var TYPE_SPEED  = 80;
-      var DEL_SPEED   = 35;
-
-      function applyStyle(idx) {
-        var s = styles[idx];
-        el.style.fontFamily = s.font;
-        el.style.color      = s.color;
-        // update cursor color too
-        var cursor = document.querySelector('.typewriter-cursor');
-        if (cursor) cursor.style.color = s.color;
-        // flash the font name label
-        if (label) {
-          label.textContent = s.name;
-          label.classList.remove('is-visible');
-          // force reflow so animation replays
-          void label.offsetWidth;
-          label.classList.add('is-visible');
-        }
-      }
-
-      function tick() {
-        if (!deleting) {
-          i++;
-          el.textContent = text.slice(0, i);
-          if (i === text.length) {
-            deleting = true;
-            setTimeout(tick, PAUSE_FULL);
-          } else {
-            setTimeout(tick, TYPE_SPEED + Math.random() * 30); // tiny jitter = more human
-          }
-        } else {
-          i--;
-          el.textContent = text.slice(0, i);
-          if (i === 0) {
-            deleting  = false;
-            fontIndex = (fontIndex + 1) % styles.length;
-            applyStyle(fontIndex);
-            setTimeout(tick, PAUSE_EMPTY);
-          } else {
-            setTimeout(tick, DEL_SPEED);
-          }
-        }
-      }
-
-      // set initial style and kick off
-      applyStyle(0);
-      setTimeout(tick, 600);
-    })();
-
     // ── Book discovery filters + quick enquiries ──
     (function () {
       var filters = document.querySelectorAll('.book-filter');
@@ -1078,6 +996,7 @@
       });
 
       dots.forEach(function (dot, i) {
+        dot.textContent = String(i + 1).padStart(2, '0');
         dot.addEventListener('click', function () { goTo(i); });
       });
 
