@@ -707,12 +707,19 @@
         btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
       }
 
+      var savedTheme = null;
+      try { savedTheme = localStorage.getItem(KEY); } catch (e) {}
+      if (savedTheme === DARK || savedTheme === LIGHT) {
+        setTheme(savedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme(DARK);
+      } else {
+        setTheme(LIGHT);
+      }
+
       btn.addEventListener('click', function () {
         setTheme(getTheme() === LIGHT ? DARK : LIGHT);
       });
-
-      // set correct aria-label on load
-      btn.setAttribute('aria-label', getTheme() === LIGHT ? 'Switch to dark mode' : 'Switch to light mode');
     })();
 
     // ── Navigation changes from hero overlay to reading bar ──
@@ -905,6 +912,51 @@
             }
           });
       });
+
+      // ── 6. BOOK SHELF — interactive tilt based on cursor position or scroll progress ──
+      var shelf = document.querySelector('.book-note-shelf');
+      if (shelf) {
+        shelf.addEventListener('pointermove', function (event) {
+          var rect = shelf.getBoundingClientRect();
+          var x = (event.clientX - rect.left) / rect.width;
+          var y = (event.clientY - rect.top) / rect.height;
+          var rotateY = (x - 0.5) * 28;
+          var rotateX = (0.5 - y) * 26;
+          shelf.style.setProperty('--tilt-x', rotateX.toFixed(2) + 'deg');
+          shelf.style.setProperty('--tilt-y', rotateY.toFixed(2) + 'deg');
+          shelf.style.setProperty('--glow-x', (x * 100).toFixed(2) + '%');
+          shelf.style.setProperty('--glow-y', (y * 100).toFixed(2) + '%');
+        });
+
+        shelf.addEventListener('pointerleave', function () {
+          shelf.style.setProperty('--tilt-x', '0deg');
+          shelf.style.setProperty('--tilt-y', '0deg');
+          shelf.style.setProperty('--glow-x', '50%');
+          shelf.style.setProperty('--glow-y', '35%');
+        });
+
+        if (window.matchMedia('(pointer: coarse)').matches) {
+          gsap.to(shelf, {
+            scrollTrigger: {
+              trigger: '.book-note',
+              start: 'top 78%',
+              end: 'bottom 30%',
+              scrub: 1,
+              onUpdate: function (self) {
+                var progress = self.progress;
+                var x = 0.5 + (progress - 0.5) * 2.1;
+                var y = 0.5 + (progress - 0.5) * 1.8;
+                var rotateY = (x - 0.5) * 32;
+                var rotateX = (0.5 - y) * 28;
+                shelf.style.setProperty('--tilt-x', rotateX.toFixed(2) + 'deg');
+                shelf.style.setProperty('--tilt-y', rotateY.toFixed(2) + 'deg');
+                shelf.style.setProperty('--glow-x', (x * 100).toFixed(2) + '%');
+                shelf.style.setProperty('--glow-y', (y * 100).toFixed(2) + '%');
+              }
+            }
+          });
+        }
+      }
 
       // ── 6. STAT NUMBERS — count up animation ──
       gsap.utils.toArray('.stat-number').forEach(function (el) {
