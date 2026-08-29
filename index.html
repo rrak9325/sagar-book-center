@@ -35,8 +35,7 @@
   <link rel="preload" as="image" href="images/front_main_shop.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Editorial type pairing: one expressive serif, one restrained sans -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Cormorant+SC:wght@500;600;700&family=Fraunces:wght@500;600;700&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&family=Cinzel:wght@500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 
   <!-- Schema.org LocalBusiness structured data -->
@@ -111,9 +110,9 @@
 
   <!-- ===== NAV ===== -->
   <nav aria-label="Main navigation">
-    <a href="#" class="nav-brand">
+    <a href="#" class="nav-brand" aria-label="Sagar Book Centre home">
       <img src="images/logo.jpg" alt="Sagar Book Centre" class="nav-logo" />
-      <span class="nav-brand-text"><span>Sagar</span> Book Centre</span>
+      <span class="nav-brand-text"><span>SBC</span></span>
     </a>
     <ul class="nav-links" id="nav-links">
       <li><a href="#about" class="nav-link-item">About</a></li>
@@ -171,6 +170,12 @@
   <!-- ===== HERO ===== -->
   <header class="hero" role="banner" style="background-image: url('images/front_main_shop.webp')">
 
+    <div class="hero-ambient" aria-hidden="true">
+      <span class="hero-orb hero-orb-one"></span>
+      <span class="hero-orb hero-orb-two"></span>
+      <span class="hero-orb hero-orb-three"></span>
+    </div>
+
     <div class="hero-inner">
       <div class="hero-eyebrow">
         <span class="hero-eyebrow-line"></span>
@@ -178,7 +183,9 @@
         <span class="hero-eyebrow-line"></span>
       </div>
 
-      <h1 class="hero-title">Sagar Book Centre</h1>
+      <h1 class="hero-title" aria-live="polite">
+        <span class="hero-title-main hero-title-typed" id="hero-title-typed"></span>
+      </h1>
 
       <p class="hero-location">Gandhi Road &nbsp;·&nbsp; Ahmedabad</p>
 
@@ -348,6 +355,9 @@
         <a href="https://wa.me/918758585259" target="_blank" rel="noopener noreferrer" class="text-link">Ask for a recommendation <span aria-hidden="true">↗</span></a>
       </div>
       <div class="book-note-shelf" aria-hidden="true">
+        <span class="book-note-floating book-note-floating--one">New Arrivals</span>
+        <span class="book-note-floating book-note-floating--two">Study Picks</span>
+        <span class="book-note-floating book-note-floating--three">Curated</span>
         <span class="book-note-orbit book-note-orbit--outer"></span>
         <span class="book-note-orbit book-note-orbit--inner"></span>
         <span class="book-note-spark book-note-spark--one">✦</span>
@@ -548,7 +558,7 @@
         <div class="info-block reveal reveal--left">
 
           <!-- Address — tapping opens Maps on mobile -->
-          <a class="info-item" href="https://maps.app.goo.gl/u5iPHUiogL23BqKf8" target="_blank" rel="noopener noreferrer">
+          <a class="info-item info-item--map" href="https://maps.app.goo.gl/u5iPHUiogL23BqKf8" target="_blank" rel="noopener noreferrer">
             <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2"/></svg></span>
             <div class="info-content">
               <strong>Address</strong>
@@ -557,7 +567,7 @@
           </a>
 
           <!-- Phone — tapping opens dialer on mobile -->
-          <a class="info-item" href="tel:+918758585259">
+          <a class="info-item info-item--call" href="tel:+918758585259">
             <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 3.8 9 3l2 5-2.1 1.6a14.7 14.7 0 0 0 5.5 5.5L16 13l5 2-.8 2.4A3 3 0 0 1 17.4 20C9.8 19.3 4.7 14.2 4 6.6a3 3 0 0 1 2.6-2.8Z"/></svg></span>
             <div class="info-content">
               <strong>Phone</strong>
@@ -566,7 +576,7 @@
           </a>
 
           <!-- WhatsApp — tapping opens WhatsApp on mobile -->
-          <a class="info-item" href="https://wa.me/918758585259" target="_blank" rel="noopener noreferrer">
+          <a class="info-item info-item--chat" href="https://wa.me/918758585259" target="_blank" rel="noopener noreferrer">
             <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5 4v-4.2a2.5 2.5 0 0 1-1-2V5.5Z"/></svg></span>
             <div class="info-content">
               <strong>WhatsApp</strong>
@@ -574,7 +584,7 @@
             </div>
           </a>
 
-          <div class="info-item" style="cursor:default;">
+          <div class="info-item info-item--since" style="cursor:default;">
             <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M8 3v4M16 3v4M4 9h16"/></svg></span>
             <div class="info-content">
               <strong>Established</strong>
@@ -723,6 +733,66 @@
         var years = new Date().getFullYear() - 1982;
         el.textContent = years + '+';
       }
+    })();
+
+    // ── Premium typewriter headline — typed once, then cycles through many luxury display fonts ──
+    (function () {
+      var el = document.getElementById('hero-title-typed');
+      if (!el) return;
+
+      var fullText = 'Sagar Book Centre';
+      var stepDelay = 90;
+      var cycleDelay = 2200;
+      var fontCycle = [
+        "'Fraunces', Georgia, serif",
+        "'Cormorant Garamond', Georgia, serif",
+        "'Playfair Display', Georgia, serif",
+        "'Libre Baskerville', Georgia, serif",
+        "'DM Serif Display', Georgia, serif",
+        "'Cinzel', Georgia, serif",
+        "'Lora', Georgia, serif",
+        "'Merriweather', Georgia, serif",
+        "'Cormorant SC', Georgia, serif",
+        "'Fraunces', Georgia, serif"
+      ];
+
+      function setPremiumFont(index) {
+        var family = fontCycle[index % fontCycle.length];
+        el.style.fontFamily = family;
+        el.style.letterSpacing = index % 2 === 0 ? '-.04em' : '-.02em';
+        el.style.transform = 'translateY(' + ((index % 2 === 0) ? 0 : 2) + 'px) scale(' + (1 + ((index % 3) * 0.008)) + ')';
+      }
+
+      var currentText = '';
+      var index = 0;
+      var loopTimer = null;
+
+      function startLoop() {
+        clearInterval(loopTimer);
+        loopTimer = setInterval(function () {
+          index = (index + 1) % fontCycle.length;
+          setPremiumFont(index);
+        }, cycleDelay);
+      }
+
+      function tick() {
+        if (index <= fullText.length) {
+          currentText = fullText.slice(0, index);
+          el.textContent = currentText;
+          index += 1;
+          setTimeout(tick, stepDelay);
+        } else {
+          setPremiumFont(0);
+          setTimeout(function () { setPremiumFont(1); }, 420);
+          setTimeout(function () { setPremiumFont(3); }, 980);
+          setTimeout(function () { setPremiumFont(5); }, 1500);
+          setTimeout(startLoop, 2100);
+        }
+      }
+
+      el.textContent = '';
+      index = 0;
+      setTimeout(tick, 250);
     })();
 
     // ── GSAP Animations ──
