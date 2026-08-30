@@ -1205,6 +1205,23 @@
         a.addEventListener('click', closeMenu);
       });
     })();
+    (function () {
+      var visit = document.querySelector('.visit');
+      if (!visit || !('IntersectionObserver' in window)) return;
+
+      function activate(entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) visit.classList.add('is-visible');
+        });
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        activate(entries);
+      }, { threshold: .22 });
+
+      observer.observe(visit);
+      activate([{ isIntersecting: visit.getBoundingClientRect().top < window.innerHeight && visit.getBoundingClientRect().bottom > 0 }]);
+    })();
   </script>
 
 </body>
