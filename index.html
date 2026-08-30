@@ -5,11 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Sagar Book Centre — Ahmedabad's beloved bookshop since 1982. Explore a wide collection of books across all genres at 16 Seller Kanak Chamber, Gandhi Road." />
   <meta name="keywords" content="bookshop ahmedabad, books gandhi road, sagar book centre, buy books ahmedabad, ncert books ahmedabad" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Sagar Book Centre" />
+  <meta name="geo.region" content="IN-GJ" />
+  <meta name="geo.placename" content="Ahmedabad" />
 
   <!-- Open Graph — sagarbook-card shows when link is shared on WhatsApp/social -->
   <meta property="og:title" content="Sagar Book Centre — Ahmedabad" />
   <meta property="og:description" content="Your neighbourhood bookshop since 1982. Find novels, classics, NCERT books and more at Gandhi Road, Ahmedabad." />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_IN" />
   <meta property="og:url" content="https://sagarbook.com" />
   <meta property="og:image" content="https://sagarbook.com/images/new-sagarbook-card.jpg" />
   <meta property="og:image:width" content="3987" />
@@ -42,7 +47,8 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BookStore",
+    "@type": ["BookStore", "LocalBusiness"],
+    "@id": "https://sagarbook.com/#bookstore",
     "name": "Sagar Book Centre",
     "logo": {
       "@type": "ImageObject",
@@ -52,10 +58,23 @@
     },
     "image": "https://sagarbook.com/images/new-sagarbook-card.jpg",
     "url": "https://sagarbook.com",
+    "mainEntityOfPage": "https://sagarbook.com/",
     "telephone": "+918758585259",
     "priceRange": "₹",
     "foundingDate": "1982-06-21",
     "description": "Sagar Book Centre is a beloved bookshop in the heart of Ahmedabad, serving readers since 1982 with a wide collection of books across all genres including NCERT, academic, fiction, classics and more.",
+    "areaServed": {
+      "@type": "City",
+      "name": "Ahmedabad"
+    },
+    "knowsAbout": [
+      "NCERT books",
+      "competitive exam books",
+      "academic reference books",
+      "fiction and novels",
+      "Gujarati literature",
+      "medical textbooks"
+    ],
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "16 Seller Kanak Chamber, Gandhi Road",
@@ -80,6 +99,20 @@
       "telephone": "+918758585259",
       "contactType": "customer service",
       "availableLanguage": ["English", "Hindi", "Gujarati"]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://sagarbook.com/#website",
+    "url": "https://sagarbook.com/",
+    "name": "Sagar Book Centre",
+    "description": "Independent bookshop on Gandhi Road, Ahmedabad, serving readers since 1982.",
+    "inLanguage": "en-IN",
+    "publisher": {
+      "@id": "https://sagarbook.com/#bookstore"
     }
   }
   </script>
